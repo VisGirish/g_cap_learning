@@ -4,10 +4,16 @@ using { mycapapp.db.master, mycapapp.db.transaction } from '../db/datamodel';
 
 
 
-service CatalogService @(path: 'CatalogService') {
+service CatalogService @(path: 'CatalogService', requires:'authenticated-user') {
 
 
-    entity EmployeeSet as projection on master.employees;
+    entity EmployeeSet 
+
+            @(restrict: [
+                { grant: 'READ', to:'Viewer', where: 'bankName = $user.BankName' },
+                { grant: 'WRITE', to:'Admin' }
+            ])
+as projection on master.employees;
     entity AddressSet as projection on master.address;
     entity businesspartner as projection on master.businesspartner;
     entity ProductSet as projection on master.product;
