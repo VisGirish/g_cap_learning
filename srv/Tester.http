@@ -87,7 +87,7 @@ Content-Type: application/json
 
 {}
 ###Call the function
-http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+http://localhost:4004odata/v4/Catal/ogService/getLargestOrder()
 
 ###
 http://localhost:4004/odata/v4/MyService/EmployeeSrv
